@@ -3,21 +3,21 @@ pipeline{
     stages{
         stage("Build"){
             steps{
-                sh 
+                echo "Building....."
             }
         }
     }
         stages{
         stage("Test"){
             steps{
-                
+                echo "Testing ....."
             }
         }
     }
         stages{
         stage("Deploy"){
             steps{
-                
+                echo "Deploying ...."
             }
         }
     }
