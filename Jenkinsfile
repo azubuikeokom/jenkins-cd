@@ -1,25 +1,24 @@
 pipeline{
     agent any
+    environment{
+         OWNER = 'Azubuike'
+         ROLE = 'DevOps'
+    }
     stages{
-        stage("Docker"){
-           steps{
-            dockerNode('docker') {
-                docker version
-                }
-           }     
-        }
         stage("Build"){
             steps{
                 sh "ls -ltr"
                 sh "echo hello! this will go into my workspace > build-job.txt"
                 sh "ls -ltr"
-                sh "pwd"
                 echo "Building....."
+                echo "${OWNER} is  running this pipeline"
+                sh 'printenv'
             }
         }
         stage("Test"){
             steps{
                 echo "Testing ....."
+                sh "docker version"
             }
         }
 
