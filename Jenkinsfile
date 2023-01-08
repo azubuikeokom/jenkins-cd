@@ -1,6 +1,13 @@
 pipeline{
     agent any
     stages{
+        stage("Docker"){
+           steps{
+            dockerNode('docker') {
+                docker version
+                }
+           }     
+        }
         stage("Build"){
             steps{
                 sh "ls -ltr"
