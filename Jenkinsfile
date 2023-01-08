@@ -1,10 +1,17 @@
 pipeline{
     agent any
+    options{
+        timeout(time: 1, unit: 'HOURS')
+    }
+    parameters{
+        choice(name: 'CHOICE', choices: ["prod","staging","dev"], description: "work environmnent")
+    }
     environment{
          OWNER = 'Azubuike'
          ROLE = 'DevOps'
          DOCKER_CRED = credentials('Docker-Credentials')
     }
+ 
     stages{
         stage("Build"){
             steps{
@@ -19,6 +26,7 @@ pipeline{
         stage("Test"){
             steps{
                 echo "Testing ....."
+                echo "choice ${params.CHOICE}"
             }
         }
 
