@@ -3,6 +3,7 @@ pipeline{
     environment{
          OWNER = 'Azubuike'
          ROLE = 'DevOps'
+         DOCKER_CRED = credentials('Docker-Credentials')
     }
     stages{
         stage("Build"){
@@ -12,13 +13,12 @@ pipeline{
                 sh "ls -ltr"
                 echo "Building....."
                 echo "${OWNER} is  running this pipeline"
-                sh 'printenv'
+                echo "docker username ${DOCKER_CRED_USR}"
             }
         }
         stage("Test"){
             steps{
                 echo "Testing ....."
-                sh "docker version"
             }
         }
 
