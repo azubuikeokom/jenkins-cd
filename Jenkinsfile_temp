@@ -11,9 +11,17 @@ pipeline{
          ROLE = 'DevOps'
          DOCKER_CRED = credentials('Docker-Credentials')
     }
- 
+    triggers{
+        cron('* * * * *')
+    }
+    tools{
+        maven "apache-maven-3.0.1"
+    }
     stages{
         stage("Build"){
+            when{
+                branch "master"
+            }
             steps{
                 sh "ls -ltr"
                 sh "echo hello! this will go into my workspace > build-job.txt"
@@ -33,6 +41,7 @@ pipeline{
         stage("Deploy"){
             steps{
                 echo "Deploying ...."
+                sh "mvn --version"
             }
         }
     }
