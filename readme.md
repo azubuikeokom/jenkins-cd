@@ -1,4 +1,4 @@
-# maven confiigurations in settings.xml and on pom.xml
+# maven configurations in settings.xml and on pom.xml
 
     <settings>
         <pluginGroups>
@@ -21,7 +21,7 @@
     </settings> 
 
 
-## lock down maven sonar plugin under project build 
+ lock down maven sonar plugin under project build 
 
     <build>
         <pluginManagement>
@@ -35,15 +35,15 @@
         </pluginManagement>
       </build>
 
-## maven sonar command
+ maven sonar command
 
     mvn sonar:sonar -Dsonar.host.url=http://x.x.x.x:9000 -Dsonar.login=<token generated at the sonarqube server>
 
-# when host url is confiured already in settings.xml
+ when host url is confiured already in settings.xml
 
     mvn sonar:sonar -Dsonar.login=<token generated at sonarqube>
 
-# Jenkins pipeline
+ Jenkins pipeline
 
     pipeline {
         agent any
